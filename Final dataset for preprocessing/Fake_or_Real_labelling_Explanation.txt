@@ -1,0 +1,45 @@
+Objective:
+The primary goal of this notebook is to label news descriptions as real or fake by evaluating them against various criteria. Multiple features and conditions are considered, ranging from source credibility to textual characteristics, to determine the authenticity of each news entry.
+
+Logic:
+Feature-Based Analysis:
+
+A set of predefined criteria is used to evaluate each news description.
+The analysis is rule-based, checking multiple indicators that are commonly observed in fake news.
+If enough indicators suggest that the news is likely fake, it is labeled as such; otherwise, it's labeled as real.
+Implementation:
+
+Data Import:
+The dataset, named kitwe_final_Clean.csv, is loaded into a DataFrame using Pandas.
+Source Credibility Analysis:
+A list of reputable sources is created, including international news outlets and additional Zambian and Kitwe-specific sources.
+A function (updated_check_source_credibility) checks each news entry's URL:
+Categorizes it as reputable, suspicious, or unknown based on known domains.
+Clickbait Detection:
+The headlines are analyzed for signs of sensationalism, including excessive punctuation, full capitalization, or provocative words.
+Each headline is labeled as either clickbait or not_clickbait.
+Keyword Frequency Analysis:
+Keywords that are commonly used in sensational or fake news are counted within descriptions.
+A threshold is used to determine if the frequency of sensational keywords is high.
+Topic Modeling Using LDA:
+A Latent Dirichlet Allocation (LDA) model is applied to identify underlying themes in descriptions.
+Sensational or dubious topics are flagged based on the dominant topic detected.
+Sentiment Analysis:
+Sentiment scores are generated using TextBlob, indicating whether the text has an extreme (positive/negative) tone.
+Extremes in sentiment are considered a potential indicator of fake news.
+Enhanced Criteria:
+
+Additional conditions are checked:
+Excessive Capitalization: Scans for multiple words in all caps.
+Mismatched Headline and Description: Uses cosine similarity to evaluate alignment between the headline and the description.
+Vague Author: Flags generic author names like "Admin" or "Editor."
+Suspicious Links: Counts URLs in the description that might link to dubious sites.
+Short and Sensational Descriptions: Checks for descriptions that are both short and use sensational language.
+Final Labeling:
+
+Each criterion contributes to a fake indicator count.
+If 3 or more indicators suggest the news might be fake, it is labeled as fake (0). Otherwise, it is labeled as real (1).
+Output:
+The final output is a dataset with an additional column (Target_final) that labels each news entry as 0 (fake) or 1 (real).
+This labeling is based on a combination of rule-based criteria and statistical analysis, ensuring a more informed decision for each news description.
+This notebook uses a comprehensive feature-based and rule-based approach to analyze news authenticity, covering a wide range of characteristics to detect potentially fake news with higher accuracy.
