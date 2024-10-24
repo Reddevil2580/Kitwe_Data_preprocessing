@@ -1,0 +1,2 @@
+The uncategorized categories were finally categorized using KNN algorithm where the pre-categorized categories were taken as the training data which we then used by the algorithm to predict
+possible category for the uncategorized category.
