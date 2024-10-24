@@ -1,0 +1,23 @@
+Objective:
+The primary goal of the code is to categorize news descriptions into specific categories using a keyword-based approach. The categories are defined in advance, and keywords associated with each category help determine the correct classification for each news description.
+
+Logic:
+Keyword Matching:
+
+A dictionary (categories_keywords) is created, where each category (e.g., sports, politics, education) is associated with a list of relevant keywords.
+Each news description is scanned to check if it contains any keywords linked to one or more categories.
+If a keyword matches, the description is tagged with the corresponding category.
+Implementation:
+
+The code is implemented in Python using the Pandas library for data manipulation.
+The categorize_description function is created to handle the keyword-matching logic:
+It takes a news description as input.
+Iterates over each category and its associated keywords.
+If a keyword is found in the description, the category is added to a list.
+If multiple categories match, they are combined; if none match, it’s marked as "uncategorized."
+This function is applied to each row in the Description column of the dataset.
+Output:
+The result is a categorization of each news description based on the presence of keywords.
+Each description is tagged with one or more categories, or marked as "uncategorized" if no keywords match.
+The output is typically a modified dataset where each description has a new category label, facilitating further analysis or visualization.
+The approach uses a rule-based method (keywords) to handle multi-category classification, relying solely on the predefined keyword lists to determine the output.
