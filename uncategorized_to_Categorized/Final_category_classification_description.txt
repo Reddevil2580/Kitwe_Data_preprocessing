@@ -1,0 +1,29 @@
+Objective:
+The primary goal of this notebook is to categorize previously uncategorized news descriptions by leveraging a machine learning model, specifically the K-Nearest Neighbors (KNN) algorithm. This step is applied after a keyword-based categorization process left some descriptions without an assigned category.
+
+Logic:
+Handling Uncategorized Data:
+
+The initial keyword-based approach might leave some descriptions labeled as "uncategorized."
+To handle these uncategorized cases, a supervised machine learning approach is applied using the data that already has a categorized label.
+Implementation:
+
+Data Preparation:
+The dataset is split into two parts:
+Categorized Data: Rows that have a defined Single_Category label.
+Uncategorized Data: Rows where the category is still "uncategorized."
+The Description is used as the feature, while Single_Category serves as the label for the training data.
+Text Vectorization:
+A TF-IDF Vectorizer is applied to convert the text descriptions into numerical feature vectors.
+This transformation allows the KNN algorithm to work with the textual data.
+KNN Classification:
+A K-Nearest Neighbors (KNN) classifier is trained using the categorized data.
+The trained model is then used to predict the categories for the previously uncategorized rows.
+Category Assignment:
+The predicted categories are assigned back to the previously uncategorized rows, effectively filling in the missing categories.
+Output:
+
+The output is a fully categorized dataset where the previously "uncategorized" entries are now assigned specific categories based on the KNN prediction.
+The final dataset is saved, ensuring no descriptions remain unclassified unless the KNN prediction fails for some entries.
+Additionally, a count of any remaining "uncategorized" rows is checked after prediction.
+This notebook integrates a machine learning approach (KNN) to complement the initial keyword-based categorization, filling in gaps left by the rule-based method to ensure a comprehensive categorization of all descriptions.
