@@ -1,0 +1,26 @@
+Objective:
+The main goal of this code is to categorize news descriptions into a single category using keyword-based analysis. This approach focuses on identifying the most relevant category when multiple categories could be possible.
+
+Logic:
+Keyword Matching and Repetition:
+
+A dictionary (categories_keywords) is defined, similar to the previous notebook, mapping categories to a set of relevant keywords.
+Each description is scanned for occurrences of these keywords. However, in this case, the frequency (or repetition) of each keyword in the description is also counted.
+A priority-based approach is employed where the category with the highest keyword count is chosen if multiple categories match.
+Implementation:
+
+Data Import: The notebook begins by loading a CSV file named multi_category.csv into a DataFrame called data.
+Data Preparation: The Description column is treated as a string using:
+data['Description'] = data['Description'].astype(str)
+Keyword Definitions: A dictionary of categories and associated keywords is defined, similar to the earlier notebook but with an emphasis on counting occurrences.
+Prioritization Function:
+A function named prioritize_category is defined, which:
+Iterates over each category and counts how many times its keywords appear in the description.
+Tracks the counts for each category using a dictionary.
+Selects the category with the highest count of keyword occurrences.
+If no keywords are found, the description is labeled as "uncategorized."
+This function is applied to the Description column to create a new Single_Category column, representing the prioritized category for each news item.
+Output:
+The output is a dataset where each description is assigned to a single category, reflecting the one with the most keyword matches.
+This makes it possible to obtain a dominant classification, even if multiple categories were initially possible. The result is a cleaner, more concise categorization for each news description.
+This notebook uses a prioritization logic to ensure that descriptions are mapped to the most relevant category based on keyword frequency, rather than allowing for multiple category matches.
